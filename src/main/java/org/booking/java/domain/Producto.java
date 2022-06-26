@@ -23,4 +23,5 @@ public class Producto {
     @ElementCollection(targetClass=String.class)
     private Set<String> img;
     private String codigo;
+
 }

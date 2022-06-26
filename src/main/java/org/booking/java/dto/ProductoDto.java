@@ -31,6 +31,7 @@ public class ProductoDto {
     @NotNull
     private String codigo;
 
+
     public ProductoDto(String nombre, String descripcion, int cantidad, Boolean estado, Set<String> img, String codigo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
