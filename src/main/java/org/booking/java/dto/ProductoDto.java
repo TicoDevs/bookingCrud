@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -15,14 +17,21 @@ import javax.validation.constraints.NotNull;
 public class ProductoDto {
 
     private long id;
+    @NotNull
     private String nombre;
+    @NotNull
     private String descripcion;
+    @NotNull
     private int cantidad;
+    @NotNull
     private Boolean estado;
-    private byte img;
+    @NotNull
+    @Size(min = 1, message = "Al menos debe de agregar un rol")
+    private Set<String> img;
+    @NotNull
     private String codigo;
 
-    public ProductoDto(String nombre, String descripcion, int cantidad, Boolean estado, byte img, String codigo) {
+    public ProductoDto(String nombre, String descripcion, int cantidad, Boolean estado, Set<String> img, String codigo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;

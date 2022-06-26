@@ -14,7 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -87,7 +89,9 @@ public class ProductoServiceImpl  implements ProductoService{
         producto.setDescripcion(productoDto.getDescripcion());
         producto.setCantidad(productoDto.getCantidad());
         producto.setEstado(productoDto.getEstado());
-        producto.setImg(productoDto.getImg());
+        Set<String> imagenes = new HashSet<String>();
+        imagenes.addAll(productoDto.getImg());
+        producto.setImg(imagenes.stream().collect(Collectors.toSet()));
         producto.setCodigo(productoDto.getCodigo());
         Producto productoActualizada = productoRepository.save(producto);
         return mappearDTO(productoActualizada);

@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -16,15 +15,12 @@ public class Producto {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotNull
+
     private String nombre;
     private String descripcion;
-    @NotNull
     private int cantidad;
-    @NotNull
     private Boolean estado;
-    private byte img;
-    @NotNull
+    @ElementCollection(targetClass=String.class)
+    private Set<String> img;
     private String codigo;
-
 }
