@@ -7,20 +7,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.Set;
 
-@Entity
-@Data @AllArgsConstructor @NoArgsConstructor
-public class Producto {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Entity
+@Data @AllArgsConstructor
+@NoArgsConstructor
+public class Reservacion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombre;
-    private String descripcion;
-    private int cantidad;
+    private Date fechaReservacion;
     private Boolean estado;
     @ElementCollection(targetClass=String.class)
-    private Set<String> img;
-    private String codigo;
+    private Set<String> tipo;
+    private long idMiembro;
+    private long idProducto;
+    private long idCita;
+
 
 }
